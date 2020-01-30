@@ -25,7 +25,7 @@ module.exports = {
 					pool:true,
                     auth: {
                             user: process.env.UEMAIL,
-                            pass:  process.env.PEMAIL
+                            pass: process.env.PEMAIL
                        }
                 });
                 const mailOptions = {
@@ -53,6 +53,7 @@ module.exports = {
                     }else {
                         res.status(201).send(info)
                     }
+                    res.status(201).send(err,info)
                 });
 
             }
