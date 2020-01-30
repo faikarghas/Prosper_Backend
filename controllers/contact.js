@@ -24,8 +24,8 @@ module.exports = {
 					secure: true,
 					pool:true,
                     auth: {
-                            user: process.env.UEMAIL,
-                            pass: process.env.PEMAIL
+                            user: 'prosperventura@gmail.com',
+                            pass: 'Prosper123!'
                        }
                 });
                 const mailOptions = {
@@ -48,6 +48,24 @@ module.exports = {
                             `,
                 };
                 transporter.sendMail(mailOptions, function (err, info) {
+                    if(err){
+                        res.status(401).send(err)
+                    }else {
+                        res.status(201).send(info)
+                    }
+                    res.status(201).send(err,info)
+                });
+
+                const mailOptions2 = {
+                    from: 'Prosper Contact" prosperventura@gmail.com', // sender address
+                    to: req.body.data.email, // list of receivers
+                    subject: 'Contact Form', // Subject line
+                    html:   `
+                            <h1>Terima kasih telah menghubungi kami</h1>
+                            `,
+                };
+
+                transporter.sendMail(mailOptions2, function (err, info) {
                     if(err){
                         res.status(401).send(err)
                     }else {
