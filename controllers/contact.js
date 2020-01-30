@@ -49,9 +49,11 @@ module.exports = {
                 };
                 transporter.sendMail(mailOptions, function (err, info) {
                     if(err){
-                        res.status(401).send(err)
+                        console.log(err)
+                        res.send(err)
                     }else {
-                        res.status(201).send(info)
+                        console.log(info);
+                        res.send(info)
                     }
                     res.status(201).send(err,info)
                 });
@@ -67,9 +69,11 @@ module.exports = {
 
                 transporter.sendMail(mailOptions2, function (err, info) {
                     if(err){
-                        res.status(401).send(err)
+                        console.log(err)
+                        res.send(err)
                     }else {
-                        res.status(201).send(info)
+                        console.log(info);
+                        res.send(info)
                     }
                     res.status(201).send(err,info)
                 });
