@@ -4,12 +4,12 @@ require('dotenv').config();
 module.exports = {
     post : (req, res) => {
         let data = {
-            firstname: req.body.data.firstname,
-            lastname: req.body.data.lastname,
-            companyname:req.body.data.companyname,
-            emailaddress:req.body.data.email,
-            phonenumber:req.body.data.phonenumber,
-            message: req.body.data.message,
+            firstname: req.body.firstname,
+            lastname: req.body.lastname,
+            companyname:req.body.companyname,
+            emailaddress:req.body.email,
+            phonenumber:req.body.phonenumber,
+            message: req.body.message,
         }
 
         let sql = 'insert into contact_prosper set ?';
@@ -34,25 +34,23 @@ module.exports = {
                     subject: 'Contact Form', // Subject line
                     html:   `
                             <h4>First Name :</h4>
-                            <p style="margin:0;">${req.body.data.firstname}</p> <br/>
+                            <p style="margin:0;">${req.body.firstname}</p> <br/>
                             <h4>Last Name :</h4>
-                            <p style="margin:0;">${req.body.data.lastname}</p> <br/>
+                            <p style="margin:0;">${req.body.lastname}</p> <br/>
                             <h4>Email :</h4>
-                            <p style="margin:0;">${req.body.data.email}</p> <br/>
+                            <p style="margin:0;">${req.body.email}</p> <br/>
                             <h4>Company Name :</h4>
-                            <p style="margin:0;">${req.body.data.companyname}</p> <br/>
+                            <p style="margin:0;">${req.body.companyname}</p> <br/>
                             <h4>Phone Number :</h4>
-                            <p style="margin:0;">${req.body.data.phonenumber}</p> <br/>
+                            <p style="margin:0;">${req.body.phonenumber}</p> <br/>
                             <h4>Message :</h4>
-                            <p>${req.body.data.message}</p>
+                            <p>${req.body.message}</p>
                             `,
                 };
                 transporter.sendMail(mailOptions, function (err, info) {
                     if(err){
-                        console.log(err)
                         res.send(err)
                     }else {
-                        console.log(info);
                         res.send(info)
                     }
                     res.status(201).send(err,info)
@@ -60,7 +58,7 @@ module.exports = {
 
                 const mailOptions2 = {
                     from: 'Prosper Contact" prosperventura@gmail.com', // sender address
-                    to: req.body.data.email, // list of receivers
+                    to: req.body.email, // list of receivers
                     subject: 'Contact Form', // Subject line
                     html:   `
                             <h1>Terima kasih telah menghubungi kami</h1>
@@ -69,10 +67,8 @@ module.exports = {
 
                 transporter.sendMail(mailOptions2, function (err, info) {
                     if(err){
-                        console.log(err)
                         res.send(err)
                     }else {
-                        console.log(info);
                         res.send(info)
                     }
                     res.status(201).send(err,info)
