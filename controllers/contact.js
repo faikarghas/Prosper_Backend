@@ -24,8 +24,8 @@ module.exports = {
 					secure: true,
 					pool:true,
                     auth: {
-                            user: 'prosperventura@gmail.com',
-                            pass: 'Prosper123!'
+                            user:"prosperventura@gmail.com",
+                            pass:"Prosper123!"
                        }
                 });
                 const mailOptions = {
@@ -61,7 +61,9 @@ module.exports = {
                     to: req.body.email, // list of receivers
                     subject: 'Contact Form', // Subject line
                     html:   `
-                            <h1>Terima kasih telah menghubungi kami</h1>
+                            <p>Dear ${req.body.firstname} ${req.body.lastname}<p>
+                            <br/>
+                            <p>Terima kasih telah menghubungi Prosper Kapital Ventura. Kami telah menerima pesan Anda dan akan segera menghubungi Anda kembali.<p>
                             `,
                 };
 
